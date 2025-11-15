@@ -13,7 +13,11 @@
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="#home">Ataxan</a>
+      <a class="brand" href="#home" id="brand">
+        Ataxan
+        <span class="name-tooltip" role="status" aria-hidden="true">Yes, that is my actual name</span>
+      </a>
+
       <nav class="site-nav" id="site-nav" aria-label="Main navigation">
         <ul>
           <li><a href="#home">Home</a></li>
@@ -70,7 +74,7 @@
         <p class="muted">A few highlights — click to view live or code.</p>
 
         <div class="projects-grid">
-          <article class="card">
+          <article class="card" tabindex="0">
             <h3>Project One</h3>
             <p class="muted">Short description of project one. Tech stack, what it does.</p>
             <p class="card-links">
@@ -79,7 +83,7 @@
             </p>
           </article>
 
-          <article class="card">
+          <article class="card" tabindex="0">
             <h3>Project Two</h3>
             <p class="muted">Short description of project two.</p>
             <p class="card-links">
@@ -88,7 +92,7 @@
             </p>
           </article>
 
-          <article class="card">
+          <article class="card" tabindex="0">
             <h3>Project Three</h3>
             <p class="muted">Short description of project three.</p>
             <p class="card-links">

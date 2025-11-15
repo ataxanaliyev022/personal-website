@@ -63,11 +63,65 @@ html {
   justify-content:space-between;
   height:var(--nav-height);
 }
+
+/* BRAND + tooltip */
 .brand{
   font-weight:700;
   color:var(--text);
   text-decoration:none;
+  position:relative; /* needed for tooltip positioning */
+  display:inline-block;
+  padding:0.15rem 0.25rem;
+  border-radius:6px;
 }
+
+/* tooltip element */
+.name-tooltip{
+  position:absolute;
+  left:0;
+  top:calc(100% + 10px);
+  min-width:200px;
+  max-width:320px;
+  background: rgba(2,6,23,0.98);
+  color:var(--text);
+  padding:0.55rem 0.7rem;
+  border-radius:8px;
+  box-shadow: 0 8px 24px rgba(2,6,23,0.6);
+  font-size:0.95rem;
+  line-height:1.25;
+  color:var(--muted);
+  opacity:0;
+  transform: translateY(-6px);
+  transition: opacity 180ms ease, transform 180ms cubic-bezier(.2,.9,.2,1);
+  pointer-events:none;
+  z-index:10000;
+  white-space:nowrap;
+}
+
+/* Show tooltip on hover or focus */
+.brand:hover .name-tooltip,
+.brand:focus .name-tooltip,
+.brand:focus-within .name-tooltip {
+  opacity:1;
+  transform: translateY(0);
+  pointer-events:auto;
+  color:var(--text);
+}
+
+/* small caret under tooltip (optional) */
+.name-tooltip::before{
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 12px;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  background: rgba(2,6,23,0.98);
+  border-radius:1px;
+}
+
+/* Navigation */
 .site-nav ul{
   list-style:none;
   display:flex;
@@ -150,9 +204,7 @@ html {
   box-shadow:var(--shadow);
   transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease, background-color 180ms ease;
   will-change: transform, box-shadow;
-  /* Make pointer to indicate interactivity */
   cursor:default;
-  /* Ensure cards don't trigger accidental text selection while moving */
   -webkit-user-select: none;
   user-select: none;
 }
@@ -231,7 +283,19 @@ html {
 }
 .footer-inner{display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap}
 
-/* Responsive */
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .name-tooltip,
+  .card,
+  .card:hover,
+  .card:focus,
+  .card:focus-within {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Responsive adjustments */
 @media (max-width:900px){
   :root{--max-width:980px}
   .about-grid{grid-template-columns:1fr}
@@ -256,6 +320,14 @@ html {
   .card:focus-within,
   .card:focus {
     transform: translateY(-4px);
+  }
+
+  /* Adjust tooltip positioning on small screens so it doesn't overflow */
+  .name-tooltip {
+    left: 0;
+    right: auto;
+    min-width: 160px;
+    white-space: normal;
   }
 }
 .muted{color:var(--muted)}
