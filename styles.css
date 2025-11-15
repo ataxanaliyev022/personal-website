@@ -141,12 +141,47 @@ html {
   grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
   gap:1rem;
 }
+
+/* Card base style */
 .card{
   background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   padding:1rem;
   border-radius:10px;
   box-shadow:var(--shadow);
+  transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease, background-color 180ms ease;
+  will-change: transform, box-shadow;
+  /* Make pointer to indicate interactivity */
+  cursor:default;
+  /* Ensure cards don't trigger accidental text selection while moving */
+  -webkit-user-select: none;
+  user-select: none;
 }
+
+/* Hover / focus effects: lift, stronger shadow, slight background tint */
+.card:hover,
+.card:focus-within,
+.card:focus {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(2,6,23,0.6);
+  background: linear-gradient(180deg, rgba(110,231,183,0.03), rgba(255,255,255,0.02));
+}
+
+/* If card contains interactive links, make the card act like a clickable block on hover */
+.card a {
+  transition: color 160ms ease;
+}
+.card:hover a,
+.card:focus-within a {
+  color: var(--accent);
+}
+
+/* Provide an accessible focus ring for keyboard users */
+.card:focus {
+  outline: 2px solid rgba(110,231,183,0.18);
+  outline-offset: 4px;
+}
+
+/* Projects card title spacing */
 .card h3{margin:0 0 0.35rem 0}
 .card-links a{color:var(--accent); text-decoration:none}
 
@@ -216,6 +251,12 @@ html {
     border-bottom:1px solid rgba(255,255,255,0.02);
   }
   .site-nav ul{flex-direction:column}
+  /* Reduce hover translation on very small screens to avoid layout shifts */
+  .card:hover,
+  .card:focus-within,
+  .card:focus {
+    transform: translateY(-4px);
+  }
 }
 .muted{color:var(--muted)}
 .accent{color:var(--accent)}
