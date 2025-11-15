@@ -16,11 +16,23 @@
 html,body{height:100%}
 body{
   margin:0;
+  /* Keep space for the fixed header so content never goes under it */
+  padding-top: var(--nav-height);
   background:linear-gradient(180deg,var(--bg), #071021 140%);
   color:var(--text);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   line-height:1.5;
+}
+
+/* Enable smooth scrolling for browsers that support it */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure target sections are not hidden behind the fixed header */
+.section, .hero {
+  scroll-margin-top: calc(var(--nav-height) + 12px);
 }
 
 .container{
@@ -29,14 +41,21 @@ body{
   padding:0 1rem;
 }
 
-/* Header */
+/* Header
+   Changed from sticky to fixed so it stays visible at all times.
+   Kept a slight backdrop blur but increased opacity so content under it is readable.
+*/
 .site-header{
-  position:sticky;
+  position:fixed;
   top:0;
-  z-index:20;
+  left:0;
+  right:0;
+  z-index:9999;
   backdrop-filter: blur(6px);
-  background:rgba(6,10,18,0.45);
-  border-bottom:1px solid rgba(255,255,255,0.03);
+  /* More opaque so header is clearly visible over content */
+  background: rgba(6,10,18,0.94);
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 4px 14px rgba(2,6,23,0.55);
 }
 .header-inner{
   display:flex;
@@ -192,7 +211,7 @@ body{
     position:absolute;
     left:0; right:0;
     top:var(--nav-height);
-    background:rgba(6,10,18,0.9);
+    background:rgba(6,10,18,0.98);
     padding:1rem;
     border-bottom:1px solid rgba(255,255,255,0.02);
   }
