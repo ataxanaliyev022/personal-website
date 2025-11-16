@@ -175,6 +175,25 @@ html {
 /* Sections */
 .section{padding:3.5rem 0;}
 
+/* Reveal animation: use .reveal on elements you want to animate on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 600ms cubic-bezier(.2,.9,.2,1), transform 600ms cubic-bezier(.2,.9,.2,1);
+  will-change: opacity, transform;
+}
+
+/* When JS adds .reveal--active the element becomes visible */
+.reveal.reveal--active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* If you want a slightly faster reveal for small inline elements */
+.reveal.reveal--fast {
+  transition-duration: 420ms;
+}
+
 /* About */
 .about-grid{
   display:grid;
@@ -281,20 +300,6 @@ html {
   outline-offset: 4px;
 }
 
-/* Reduce motion on small screens and avoid large lifts */
-@media (max-width:700px){
-  .card:hover,
-  .card:focus-within,
-  .card:focus {
-    transform: translateY(-4px);
-  }
-  .btn:hover,
-  .btn:focus,
-  .btn:focus-visible {
-    transform: translateY(-3px);
-  }
-}
-
 /* Contact form */
 .contact-form{
   max-width:720px;
@@ -333,9 +338,11 @@ html {
   .btn,
   .btn:hover,
   .btn:focus,
-  .btn:focus-visible {
+  .btn:focus-visible,
+  .reveal {
     transition: none !important;
     transform: none !important;
+    opacity: 1 !important;
   }
 }
 
@@ -359,6 +366,18 @@ html {
     border-bottom:1px solid rgba(255,255,255,0.02);
   }
   .site-nav ul{flex-direction:column}
+
+  /* Reduce hover translation on very small screens to avoid layout shifts */
+  .card:hover,
+  .card:focus-within,
+  .card:focus {
+    transform: translateY(-4px);
+  }
+  .btn:hover,
+  .btn:focus,
+  .btn:focus-visible {
+    transform: translateY(-3px);
+  }
 
   /* Adjust tooltip positioning on small screens */
   .name-tooltip {

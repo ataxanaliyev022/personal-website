@@ -1,4 +1,5 @@
-// Mobile nav toggle, smooth scrolling with header offset, and small contact form validation
+// Mobile nav toggle, smooth scrolling with header offset, contact form validation,
+// and scroll reveal using IntersectionObserver
 document.addEventListener('DOMContentLoaded', function () {
   const nav = document.getElementById('site-nav');
   const toggle = document.getElementById('nav-toggle');
@@ -61,4 +62,48 @@ document.addEventListener('DOMContentLoaded', function () {
       // If you want submissions to be sent to a server/service instead, I can hook up Formspree/Netlify/Formsubmit.
     });
   }
+
+  // -------- Scroll reveal logic --------
+  // Elements with class "reveal" will gain "reveal--active" when they enter the viewport.
+  (function initScrollReveal() {
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reveals = document.querySelectorAll('.reveal');
+
+    if (prefersReducedMotion) {
+      // If user prefers reduced motion, make everything visible immediately
+      reveals.forEach(el => el.classList.add('reveal--active'));
+      return;
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      // Fallback: show all reveals immediately if IntersectionObserver isn't supported
+      reveals.forEach(el => el.classList.add('reveal--active'));
+      return;
+    }
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -10% 0px', // trigger a bit before element fully in view
+      threshold: 0.12
+    };
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal--active');
+          // If you want the element to animate every time it enters, remove the next line
+          obs.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    reveals.forEach(el => {
+      // Optional: stagger small inline reveals by using a data attribute
+      const delay = el.dataset.revealDelay;
+      if (delay) {
+        el.style.transitionDelay = delay;
+      }
+      observer.observe(el);
+    });
+  })();
 });
