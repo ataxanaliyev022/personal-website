@@ -9,6 +9,7 @@
   --gap: 1.25rem;
   --nav-height: 64px;
   --shadow: 0 6px 18px rgba(2,6,23,0.6);
+  --btn-shadow: 0 6px 18px rgba(2,6,23,0.45);
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
@@ -41,10 +42,7 @@ html {
   padding:0 1rem;
 }
 
-/* Header
-   Changed from sticky to fixed so it stays visible at all times.
-   Kept a slight backdrop blur but increased opacity so content under it is readable.
-*/
+/* Header */
 .site-header{
   position:fixed;
   top:0;
@@ -52,7 +50,6 @@ html {
   right:0;
   z-index:9999;
   backdrop-filter: blur(6px);
-  /* More opaque so header is clearly visible over content */
   background: rgba(6,10,18,0.94);
   border-bottom:1px solid rgba(255,255,255,0.04);
   box-shadow: 0 4px 14px rgba(2,6,23,0.55);
@@ -69,7 +66,7 @@ html {
   font-weight:700;
   color:var(--text);
   text-decoration:none;
-  position:relative; /* needed for tooltip positioning */
+  position:relative;
   display:inline-block;
   padding:0.15rem 0.25rem;
   border-radius:6px;
@@ -108,7 +105,6 @@ html {
   color:var(--text);
 }
 
-/* small caret under tooltip (optional) */
 .name-tooltip::before{
   content: "";
   position: absolute;
@@ -218,7 +214,6 @@ html {
   background: linear-gradient(180deg, rgba(110,231,183,0.03), rgba(255,255,255,0.02));
 }
 
-/* If card contains interactive links, make the card act like a clickable block on hover */
 .card a {
   transition: color 160ms ease;
 }
@@ -227,15 +222,78 @@ html {
   color: var(--accent);
 }
 
-/* Provide an accessible focus ring for keyboard users */
 .card:focus {
   outline: 2px solid rgba(110,231,183,0.18);
   outline-offset: 4px;
 }
 
-/* Projects card title spacing */
 .card h3{margin:0 0 0.35rem 0}
 .card-links a{color:var(--accent); text-decoration:none}
+
+/* Buttons: smooth lift + shadow (applies to hero CTA and form buttons) */
+.btn{
+  background:var(--accent);
+  color:#012018;
+  padding:0.55rem 0.85rem;
+  border-radius:8px;
+  text-decoration:none;
+  display:inline-block;
+  font-weight:600;
+  border:0;
+  cursor:pointer;
+
+  /* interactive motion & shadow */
+  transition: transform 200ms cubic-bezier(.2,.9,.2,1), box-shadow 200ms ease, background-color 140ms ease, color 140ms ease;
+  will-change: transform, box-shadow;
+  box-shadow: var(--btn-shadow);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.4rem;
+}
+
+/* Outline variant keeps interactive lift, but visual treatment differs */
+.btn.outline{
+  background:transparent;
+  color:var(--text);
+  border:1px solid rgba(255,255,255,0.06);
+}
+
+/* Hover and focus: lift and stronger shadow */
+.btn:hover,
+.btn:focus,
+.btn:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(2,6,23,0.55);
+}
+
+/* Slightly stronger background for outline on hover so it reads as "highlighted" */
+.btn.outline:hover,
+.btn.outline:focus{
+  background: rgba(110,231,183,0.06);
+  color: var(--text);
+  border-color: rgba(110,231,183,0.12);
+}
+
+/* Accessible focus ring for keyboard users */
+.btn:focus-visible {
+  outline: 3px solid rgba(110,231,183,0.16);
+  outline-offset: 4px;
+}
+
+/* Reduce motion on small screens and avoid large lifts */
+@media (max-width:700px){
+  .card:hover,
+  .card:focus-within,
+  .card:focus {
+    transform: translateY(-4px);
+  }
+  .btn:hover,
+  .btn:focus,
+  .btn:focus-visible {
+    transform: translateY(-3px);
+  }
+}
 
 /* Contact form */
 .contact-form{
@@ -256,24 +314,6 @@ html {
 .form-actions{margin-top:1rem; display:flex; gap:0.75rem; align-items:center;}
 .form-note{margin-top:0.75rem; color:var(--muted); font-size:0.9rem}
 
-/* Buttons */
-.btn{
-  background:var(--accent);
-  color:#012018;
-  padding:0.55rem 0.85rem;
-  border-radius:8px;
-  text-decoration:none;
-  display:inline-block;
-  font-weight:600;
-  border:0;
-  cursor:pointer;
-}
-.btn.outline{
-  background:transparent;
-  color:var(--text);
-  border:1px solid rgba(255,255,255,0.06);
-}
-
 /* Footer */
 .site-footer{
   border-top:1px solid rgba(255,255,255,0.03);
@@ -289,7 +329,11 @@ html {
   .card,
   .card:hover,
   .card:focus,
-  .card:focus-within {
+  .card:focus-within,
+  .btn,
+  .btn:hover,
+  .btn:focus,
+  .btn:focus-visible {
     transition: none !important;
     transform: none !important;
   }
@@ -315,14 +359,8 @@ html {
     border-bottom:1px solid rgba(255,255,255,0.02);
   }
   .site-nav ul{flex-direction:column}
-  /* Reduce hover translation on very small screens to avoid layout shifts */
-  .card:hover,
-  .card:focus-within,
-  .card:focus {
-    transform: translateY(-4px);
-  }
 
-  /* Adjust tooltip positioning on small screens so it doesn't overflow */
+  /* Adjust tooltip positioning on small screens */
   .name-tooltip {
     left: 0;
     right: auto;
