@@ -207,7 +207,7 @@ html {
 /* Projects */
 .projects-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(720px, 2fr));
+  grid-template-columns:repeat(auto-fit, minmax(360px, 10fr));
   gap:1rem;
 }
 
