@@ -207,7 +207,7 @@ html {
 /* Projects */
 .projects-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns:repeat(auto-fit, minmax(520px, 1fr));
   gap:1rem;
 }
 
@@ -217,11 +217,12 @@ html {
   padding:1rem;
   border-radius:10px;
   box-shadow:var(--shadow);
-  transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease, background-color 180ms ease;
+  transition: transform 220ms cubic-bezier(.3,.9,.2,1), box-shadow 220ms ease, background-color 180ms ease;
   will-change: transform, box-shadow;
   cursor:default;
   -webkit-user-select: none;
   user-select: none;
+  position: relative;
 }
 
 /* Hover / focus effects: lift, stronger shadow, slight background tint */
@@ -298,6 +299,28 @@ html {
 .btn:focus-visible {
   outline: 3px solid rgba(110,231,183,0.16);
   outline-offset: 4px;
+}
+
+.project-img1 {
+  border-radius: 4px;
+  margin-bottom: 0.8rem;
+  position: absolute;
+  top: 4px;   /* adjust */
+  right: 30px; /* adjust */
+  width: 250px;
+  border-radius: 8px;
+}
+
+.project-img2 {}
+
+.project-img3 {
+  border-radius:  10px;
+  margin-bottom: 0.8rem;
+  position: absolute;
+  top: 4px; 
+  right:40px;
+  width: 150px;
+  border-radius: 8px;
 }
 
 /* Contact form */
