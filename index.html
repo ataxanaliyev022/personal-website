@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ataxan — Home</title>
+  <meta name="description" content="Personal website for Ataxan — developer, designer, maker." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:,">
+  <!-- Optional: change or remove Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" id="brand">
+        Ataxan
+        <span class="name-tooltip" role="status" aria-hidden="true">Yes, that is my actual name</span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button id="nav-toggle" class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle menu">
+        <span class="hamburger"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container">
+        <h1 class="reveal">Hi, I’m Ataxan<span class="accent">.</span></h1>
+        <p class="lead reveal">I build web apps, design interfaces, and solve problems with code. I’m focused on clean, accessible, maintainable sites.</p>
+        <p class="hero-cta">
+          <a class="btn reveal" href="#projects">View projects</a>
+          <a class="btn outline reveal" href="#contact">Contact me</a>
+        </p>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="reveal">About</h2>
+        <div class="about-grid">
+          <div class="reveal">
+            <p>Short intro — who I am, what I do, tech I like (e.g., HTML/CSS/JS, React, Node).</p>
+            <p>Location • Open to work</p>
+            <p>Personal email: <a href="mailto:ataxanaliyev@icloud.com">ataxanaliyev@icloud.com</a><br>
+               Work email: <a href="mailto:aaliyev25810@ada.edu.az">aaliyev25810@ada.edu.az</a></p>
+          </div>
+          <div class="skill-list reveal">
+            <h3>Skills</h3>
+            <ul>
+              <li>HTML / CSS / JavaScript</li>
+              <li>Responsive design</li>
+              <li>Version control (git)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="reveal">Projects</h2>
+        <p class="muted reveal">A few highlights — click to view details.</p>
+
+        <div class="projects-grid">
+          <article class="card reveal" tabindex="0">
+            <h3>Project One</h3>
+          
+            <img src="image1.png" alt="Project One Image" class="project-img1">
+          
+            <p class="muted">Building Logic Gates with Group 45</p>
+            <p class="card-links">
+              <a href="https://www.youtube.com/watch?v=HtYE4XnlqNw" target="_blank">Link 1</a> ·
+              <a href="https://www.youtube.com/watch?v=pGp3o-AUzcU" target="_blank">Link 2</a> ·
+              <a href="https://docs.google.com/document/d/1aaLIq30I7WigOLUNOUa0LKriONQDXd_UD6AOl5YZzsM/edit?usp=sharing" target="_blank">Google Docs</a>
+            </p>
+          </article>
+
+          <article class="card reveal" tabindex="0">
+            <h3>Project Two</h3>
+
+            <img src="image2.png" alt="Project Two Image" class="project-img2">
+
+            <p class="muted">Short description of project two.</p>
+            <p class="card-links">
+              <a href="prank.html" target="_blank" rel="noopener">Live</a> ·
+              <a href="prank.html" target="_blank" rel="noopener">Code</a>
+            </p>
+          </article>
+
+          <article class="card reveal" tabindex="0">
+            <h3>Project Three</h3>
+          
+            <img src="image3.png" alt="Project Three Image" class="project-img3">
+          
+            <p class="muted">The GitHub repository of this website.</p>
+            <p class="card-links">
+              <a href="https://github.com/ataxanaliyev022/personal-website" target="_blank">Link</a> 
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="reveal">Contact</h2>
+        <p class="muted reveal">I’m available for freelance/contract work and open to new opportunities. Send a message below or email me directly.</p>
+
+        <form id="contact-form" class="contact-form reveal" action="mailto:ataxanaliyev@icloud.com" method="post" enctype="text/plain" novalidate>
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" required />
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required />
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+
+          <div class="form-actions">
+            <button type="submit" class="btn">Send</button>
+            <button type="reset" class="btn outline">Reset</button>
+          </div>
+
+          <p class="form-note muted">This form uses mailto as a fallback. If you want a hosted form (Netlify, Formspree, etc.), I can hook it up.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Ataxan — Built with plain HTML, CSS & JS</p>
+      <p class="socials">
+        <a href="https://github.com/ataxanaliyev022" target="_blank" rel="noopener">GitHub</a> ·
+        <a href="https://www.instagram.com/ataxanliyev" target="_blank" rel="noopener">Instagram</a> ·
+        <a href="https://www.codecademy.com/profiles/AtakhanStudyingAtADA" target="_blank" rel="noopener">CodeAcademy</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
