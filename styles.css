@@ -330,6 +330,23 @@ html {
   border-radius: 8px;
 }
 
+/* Let project imagery fall back into the normal flow on small screens */
+@media (max-width:700px){
+  .card {
+    padding-top: 1rem;
+  }
+
+  .project-img1,
+  .project-img2,
+  .project-img3 {
+    position: static;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 0.9rem 0;
+  }
+}
+
 /* Contact form */
 .contact-form{
   max-width:720px;
