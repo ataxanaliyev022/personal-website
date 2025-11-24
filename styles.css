@@ -416,21 +416,6 @@ html {
     min-width: 160px;
     white-space: normal;
   }
-  
-  @media (max-width: 600px) {
-    .projects-grid {
-      grid-template-columns: 1fr;
-    }
-  
-    .card {
-      padding: 1rem;
-    }
-  
-    .project-img {
-      width: 100%;
-      height: auto;
-    }
-  }
 }
 .muted{color:var(--muted)}
 .accent{color:var(--accent)}
