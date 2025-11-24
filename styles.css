@@ -316,7 +316,7 @@ html {
   position: absolute;
   top: 2px;   /* adjust */
   right: 30px; /* adjust */
-  width: 150px;
+  width: 100px;
   border-radius: 8px;
 }
 
@@ -326,7 +326,7 @@ html {
   position: absolute;
   top: 4px; 
   right:40px;
-  width: 150px;
+  width: 100px;
   border-radius: 8px;
 }
 
