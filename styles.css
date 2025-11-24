@@ -224,6 +224,22 @@ html {
   user-select: none;
   position: relative;
 }
+ 
+/* Ensure images inside cards align properly */
+.card img {
+  width: 100%; /* Make the image take the full width of the card */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure the image fills the space without distortion */
+  border-radius: 8px; /* Optional: Add rounded corners to match the card */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .card img {
+    height: 200px; /* Set a fixed height for better alignment on small screens */
+  }
+}
+
 
 /* Hover / focus effects: lift, stronger shadow, slight background tint */
 .card:hover,
