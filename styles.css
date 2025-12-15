@@ -381,6 +381,34 @@ html {
   color:var(--muted);
 }
 .footer-inner{display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap}
+.socials{
+  display:flex;
+  align-items:center;
+  gap:0.75rem;
+  margin:0;
+}
+.socials a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.05);
+  transition: transform 180ms ease, background-color 160ms ease, box-shadow 180ms ease;
+  box-shadow: 0 6px 14px rgba(2,6,23,0.35);
+}
+.socials a:hover,
+.socials a:focus-visible{
+  background:rgba(110,231,183,0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(2,6,23,0.4);
+}
+.social-icon{
+  width:22px;
+  height:22px;
+  display:block;
+}
 
 /* Respect users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
