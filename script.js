@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Close mobile nav and perform smooth scroll with offset so sticky header doesn't cover sections
   const navLinks = document.querySelectorAll('.site-nav a');
-  navLinks.forEach(() => {
+  navLinks.forEach((link) => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
       // If it's an external link, let it behave normally
