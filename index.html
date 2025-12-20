@@ -45,8 +45,36 @@
           </p>
         </div>
         <div class="hero-photo reveal">
-          <img src="all images/IMG_7366.jpeg" alt="Ataxan smiling" class="hero-img" loading="lazy">
+          <img src="all images/IMG_7366.jpeg" alt="Ataxan smiling" class="hero-img" id="profile-picture" loading="lazy">
         </div>
+        <!-- Easter Egg: Sparkles Container -->
+        <div id="candles-container"></div>
+        <!-- Easter Egg: Hidden YouTube Player -->
+        <div id="youtube-player-container" style="display: none;">
+          <iframe id="youtube-player" width="0" height="0" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <!-- Easter Egg: Scorpion Container -->
+        <div id="scorpion-container" style="display: none;">
+          <div id="scorpion-character">
+            <div id="scorpion-spear"></div>
+            <div id="scorpion-text">GET OVER HERE!</div>
+          </div>
+        </div>
+        <!-- Easter Egg: Fullscreen Video Container -->
+        <div id="fullscreen-video-container" style="display: none;">
+          <video id="fullscreen-video" width="100%" height="100%" autoplay controls>
+            <source src="rickroll.mp4" type="video/mp4">
+            <source src="rickroll.webm" type="video/webm">
+            Your browser does not support the video tag.
+          </video>
+          <button id="close-fullscreen" style="position: absolute; top: 20px; right: 20px; z-index: 10002; padding: 10px 20px; background: #ff0000; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: bold;">Close</button>
+        </div>
+        <!-- Easter Egg: Scorpion Audio -->
+        <audio id="scorpion-audio" preload="auto">
+          <source src="get-over-here.mp3" type="audio/mpeg">
+          <source src="get-over-here.ogg" type="audio/ogg">
+          <source src="get-over-here.wav" type="audio/wav">
+        </audio>
       </div>
     </section>
 
@@ -57,6 +85,18 @@
           <div class="reveal">
             <p>Short intro — I am a freshman year of CS (Computer Science) at ADA University. I know many programming languages(e.g., HTML/CSS/JS, Python, C++). I graduated from 132-134 Lyceum in 2025. My main hobbies are playing dominos, chess and going to gym. I am also good at math.</p>
             <p>Location • <a href="https://ada.edu.az/">ADA University</a><br></p>
+            <div class="map-container reveal">
+              <iframe 
+                src="https://www.google.com/maps?q=ADA+University+Baku+Azerbaijan&output=embed&zoom=15" 
+                width="100%" 
+                height="200" 
+                style="border:0; border-radius: 8px;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="ADA University Location">
+              </iframe>
+            </div>
             <p>Personal email: <a href="mailto:ataxanaliyev@icloud.com">ataxanaliyev@icloud.com</a><br>
                Work email: <a href="mailto:aaliyev25810@ada.edu.az">aaliyev25810@ada.edu.az</a></p>
           </div>
@@ -136,7 +176,7 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>© <span id="year"></span> Ataxan — Built with plain HTML, CSS, JS & Jekyll</p>
+      <p><span id="copyright-symbol" style="cursor: pointer;">©</span> <span id="year"></span> Ataxan — Built with plain HTML, CSS, JS & Jekyll</p>
       <p class="socials">
         <a href="https://github.com/ataxanaliyev022/personal-website" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
           <img src="all images/github-logo-repository-computer-icons-github.jpg" alt="GitHub" class="social-icon">
@@ -151,6 +191,8 @@
     </div>
   </footer>
 
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
   <script src="script.js" defer></script>
 </body>
 </html>
